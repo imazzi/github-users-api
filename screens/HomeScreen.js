@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Card } from 'react-native-elements'
-import { ActivityIndicator, FlatList,View} from 'react-native';
-import { TouchableOpacity } from 'react-native-web';
+import { ActivityIndicator, FlatList,View,TouchableOpacity} from 'react-native';
 
  function HomeScreen({ navigation }) {
     const [isLoading, setLoading] = useState(true);
@@ -11,19 +10,19 @@ import { TouchableOpacity } from 'react-native-web';
       try {
         const response = await fetch('https://api.github.com/users', {
           headers: {
-            'Authorization': 'token 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',
+            'Authorization': 'token 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',
           }
         });
         const currentUsers = await response.json()
         await Promise.all(currentUsers.map(async (element) => {
           const followers = await fetch(element.followers_url, {
             headers: {
-              'Authorization': 'token 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',
+              'Authorization': 'token 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',
             }
           });
           const repositories = await fetch(element.repos_url, {
             headers: {
-              'Authorization': 'token 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',
+              'Authorization': 'token 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',
             }
           });
           const followersJson = await followers.json();
@@ -53,6 +52,7 @@ import { TouchableOpacity } from 'react-native-web';
         {isLoading ? <ActivityIndicator /> : (
           <FlatList
             data={data}
+            keyExtractor={(item, index) => index.toString()}
             renderItem={({ item }) => (
               <TouchableOpacity onPress={() => navigation.navigate('Details', item)}>
                 <Card>

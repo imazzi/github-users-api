@@ -8,10 +8,14 @@ function DetailsScreen({ route, navigation }) {
       <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
   
         <Card>
-          <Card.Title>{JSON.stringify(login)}</Card.Title>
+          <Card.Title>{login}</Card.Title>
           <Card.Divider />
           <Card.Image source={{ uri: avatar_url }} style={{ width: 400, height: 400 }} />
+          <Card.Divider />
           <Button title="Go to Home" onPress={() => navigation.navigate('Home')} />
+          <Card.Divider />
+          <Button title="Go to Search" onPress={() => navigation.navigate('Search')} />
+
         </Card>
   
   

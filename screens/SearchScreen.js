@@ -1,18 +1,21 @@
-import React, {  useState } from 'react';
-import { Searchbar } from 'react-native-paper';
-import { View} from 'react-native';
+import React, { useState } from 'react';
+import { View, TextInput } from 'react-native';
+
 const SearchScreen = ({ navigation }) => {
   const [searchQuery, setSearchQuery] = useState('');
+
   return (
     <View>
-      <Searchbar
-        placeholder="Search"
+      <TextInput
+        style={{ height: 40, margin: 12, borderWidth: 1, padding: 10, }}
         onChangeText={(query) => setSearchQuery(query)}
-        onIconPress={() => navigation.navigate('SearchResult', searchQuery)}
         value={searchQuery}
+        placeholder="Search from textInput"
+        onSubmitEditing={() => navigation.navigate('SearchResult', searchQuery)}
       />
     </View>
   );
+
 };
 
 export default SearchScreen;
