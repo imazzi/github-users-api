@@ -11,19 +11,19 @@ import { TouchableOpacity } from 'react-native-web';
       try {
         const response = await fetch('https://api.github.com/users', {
           headers: {
-            'Authorization': 'token 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',
+            'Authorization': 'token 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',
           }
         });
         const currentUsers = await response.json()
         await Promise.all(currentUsers.map(async (element) => {
           const followers = await fetch(element.followers_url, {
             headers: {
-              'Authorization': 'token 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',
+              'Authorization': 'token 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',
             }
           });
           const repositories = await fetch(element.repos_url, {
             headers: {
-              'Authorization': 'token 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',
+              'Authorization': 'token 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',
             }
           });
           const followersJson = await followers.json();
@@ -36,7 +36,6 @@ import { TouchableOpacity } from 'react-native-web';
           })
         }));
   
-        console.log('users', users);
         setData(users);
       } catch (error) {
         console.error(error);
